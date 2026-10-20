@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ubicaciones de pacientes - ARKA</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef6f7;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1769aa;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #1769aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tabla-contenedor {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1769aa;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f3f8fb;
+        }
+
+        .autorizado {
+            color: green;
+            font-weight: bold;
+        }
+
+        .no-autorizado {
+            color: red;
+            font-weight: bold;
+        }
+
+        .sin-datos {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>Ubicaciones de pacientes</h1>
+
+    <a href="{% url 'registrar_ubicacion' %}" class="boton">
+        + Nueva ubicación
+    </a>
+
+    <div class="tabla-contenedor">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Paciente</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Autorización</th>
+                    <th>Motivo</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for ubicacion in ubicaciones %}
+
+                <tr>
+                    <td>{{ ubicacion.id }}</td>
+                    <td>{{ ubicacion.paciente }}</td>
+                    <td>{{ ubicacion.latitud }}</td>
+                    <td>{{ ubicacion.longitud }}</td>
+
+                    <td>
+                        {% if ubicacion.autorizacion %}
+                            <span class="autorizado">Autorizado</span>
+                        {% else %}
+                            <span class="no-autorizado">No autorizado</span>
+                        {% endif %}
+                    </td>
+
+                    <td>{{ ubicacion.motivo }}</td>
+                    <td>{{ ubicacion.fecha_ubicacion }}</td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="7" class="sin-datos">
+                        No hay ubicaciones registradas.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluación emocional - ARKA</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8fc;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .contenedor {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #174a7e;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #1769aa;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>Evaluación emocional</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <!-- CAMBIADO: De input de texto a select para enviar el ID del Usuario -->
+        <label>Usuario</label>
+        <select name="usuario" required>
+            <option value="">Seleccione un usuario...</option>
+            {% for u in usuarios %}
+                <option value="{{ u.id }}">{{ u.username }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- CAMBIADO: De input de texto a select para enviar el ID del Profesional -->
+        <label>Profesional</label>
+        <select name="profesional">
+            <option value="">Seleccione un profesional (opcional)...</option>
+            {% for u in usuarios %}
+                <option value="{{ u.id }}">{{ u.username }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Estado afectivo</label>
+        <input type="text" name="estado_afectivo" required>
+
+        <label>Nivel de riesgo</label>
+        <select name="nivel_riesgo" required>
+            <option value="">Seleccione</option>
+            <option value="Bajo">Bajo</option>
+            <option value="Medio">Medio</option>
+            <option value="Alto">Alto</option>
+        </select>
+
+        <label>Necesidades detectadas</label>
+        <textarea name="necesidades_detectadas" required></textarea>
+
+        <label>Observaciones</label>
+        <textarea name="observaciones"></textarea>
+
+        <label>Recomendaciones</label>
+        <textarea name="recomendaciones"></textarea>
+
+        <button type="submit">
+            Guardar evaluación
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

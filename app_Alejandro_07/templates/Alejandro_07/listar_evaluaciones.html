@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluaciones emocionales - ARKA</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef6f7;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1769aa;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #1769aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tabla-contenedor {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #1769aa;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f3f8fb;
+        }
+
+        .sin-datos {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>Evaluaciones emocionales</h1>
+
+    <a href="{% url 'crear_evaluacion' %}" class="boton">
+        + Nueva evaluación
+    </a>
+
+    <div class="tabla-contenedor">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Profesional</th>
+                    <th>Estado afectivo</th>
+                    <th>Nivel de riesgo</th>
+                    <th>Necesidades detectadas</th>
+                    <th>Observaciones</th>
+                    <th>Recomendaciones</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for evaluacion in evaluaciones %}
+
+                <tr>
+                    <td>{{ evaluacion.id }}</td>
+                    <td>{{ evaluacion.usuario }}</td>
+                    <td>{{ evaluacion.profesional }}</td>
+                    <td>{{ evaluacion.estado_afectivo }}</td>
+                    <td>{{ evaluacion.nivel_riesgo }}</td>
+                    <td>{{ evaluacion.necesidades_detectadas }}</td>
+                    <td>{{ evaluacion.observaciones }}</td>
+                    <td>{{ evaluacion.recomendaciones }}</td>
+                    <td>{{ evaluacion.fecha }}</td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="9" class="sin-datos">
+                        No hay evaluaciones registradas.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

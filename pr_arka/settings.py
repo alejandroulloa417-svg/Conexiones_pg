@@ -73,10 +73,16 @@ WSGI_APPLICATION = 'pr_arka.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'proyecto_final_2026_db',  # El nombre de tu base de datos en MySQL
+        'USER': 'root',                      # Tu usuario de MySQL
+        'PASSWORD': '',                      # Tu contraseña de MySQL (deja '' si no usas clave en local)
+        'HOST': 'localhost',                 # Servidor local
+        'PORT': '3306',                      # Puerto estándar de MySQL
     }
 }
 

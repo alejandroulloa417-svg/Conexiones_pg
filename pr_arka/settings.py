@@ -74,9 +74,23 @@ WSGI_APPLICATION = 'pr_arka.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
+    # 1. Base de datos principal: PostgreSQL
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres_01',
+        'USER': 'postgres',      # ej: 'postgres'
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
+    # 2. Segunda base de datos: MySQL
+    'mysql_db': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'despliegue',
+        'USER': 'alejandro@localhost',          # ej: 'root'
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

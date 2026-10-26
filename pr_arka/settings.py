@@ -86,15 +86,13 @@ DATABASES = {
     # 2. Segunda base de datos: MySQL
     'mysql_db': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'alejandro',
-        'USER': 'alejandro',
-        'PASSWORD': 'tu_password',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'NAME': 'despliegue',    # Obligatoriamente un texto (str)
+        'USER': 'alejandro',                       # Obligatoriamente un texto (str)
+        'PASSWORD': 'root',                 # Si no tiene clave, usa '' (nunca dejes None)
+        'HOST': '127.0.0.1',                       # Obligatoriamente un texto (str)
+        'PORT': '3306',                            # Puede ser string '3306' o entero 3306
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            # Esta línea le permite aceptar versiones de MySQL/MariaDB anteriores:
-            'read_default_file': None,
         },
     }
 }

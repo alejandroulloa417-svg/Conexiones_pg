@@ -86,12 +86,16 @@ DATABASES = {
     # 2. Segunda base de datos: MySQL
     'mysql_db': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'despliegue',  # <--- Reemplaza con el nombre exacto de la base de datos que creaste en MySQL Workbench
-        'USER': 'alejandro',                   # <--- El usuario que aparece en tu tarjeta de Workbench
-        'PASSWORD': 'root', # <--- La contraseña que le asignaste a este usuario al crearlo
-        'HOST': '127.0.0.1',                   # <--- Coincide con el IP que muestra tu conexión en Workbench
+        'NAME': 'tu_nombre_bd_mysql',
+        'USER': 'alejandro',
+        'PASSWORD': 'tu_password',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
-    
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            # Esta línea le permite aceptar versiones de MySQL/MariaDB anteriores:
+            'read_default_file': None,
+        },
     }
 }
 

@@ -86,7 +86,7 @@ DATABASES = {
     # 2. Segunda base de datos: MySQL
     'mysql_db': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tu_nombre_bd_mysql',
+        'NAME': 'alejandro',
         'USER': 'alejandro',
         'PASSWORD': 'tu_password',
         'HOST': '127.0.0.1',

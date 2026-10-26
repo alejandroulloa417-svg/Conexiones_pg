@@ -86,7 +86,7 @@ DATABASES = {
     # 2. Segunda base de datos: MySQL
     'mysql_db': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nombre_de_tu_base_en_mysql',  # <--- Reemplaza con el nombre exacto de la base de datos que creaste en MySQL Workbench
+        'NAME': 'despliegue',  # <--- Reemplaza con el nombre exacto de la base de datos que creaste en MySQL Workbench
         'USER': 'alejandro',                   # <--- El usuario que aparece en tu tarjeta de Workbench
         'PASSWORD': 'root', # <--- La contraseña que le asignaste a este usuario al crearlo
         'HOST': '127.0.0.1',                   # <--- Coincide con el IP que muestra tu conexión en Workbench

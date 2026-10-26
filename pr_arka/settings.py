@@ -92,7 +92,7 @@ DATABASES = {
         'HOST': '127.0.0.1',                       # Obligatoriamente un texto (str)
         'PORT': '3306',                            # Puede ser string '3306' o entero 3306
         'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'sql_mode': 'traditional',
         },
     }
 }
